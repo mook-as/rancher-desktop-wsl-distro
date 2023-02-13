@@ -119,5 +119,12 @@ for field in $(awk -F= '/=/{ print $1 }' /os-release); do
   fi
 done
 
+# Building moproxy from source
+apk add cargo
+cargo build --release --manifest-path /moproxy/Cargo.toml # TODO How to run cargo on a certain dir ?
+install /moproxy/target/release/moproxy /distro/usr/sbin/
+install moproxy.initd /distro/etc/init.d/moproxy
+mkdir -p /distro/etc/moproxy/
+
 # Configuration for WSL compatibility
 install -m 644 wsl.conf /distro/etc/wsl.conf

@@ -6,12 +6,15 @@ ARG NERDCTL_VERSION
 ARG AGENT_VERSION
 ARG CRI_DOCKERD_VERSION
 ARG OPENRESTY_VERSION
+ARG MOPROXY_VERSION
 
 ADD files/ /
 COPY nerdctl-${NERDCTL_VERSION}.tgz /nerdctl.tgz
 COPY cri-dockerd-${CRI_DOCKERD_VERSION}.tgz /cri-dockerd.tgz
 COPY cri-dockerd-${CRI_DOCKERD_VERSION}.LICENSE /cri-dockerd.LICENSE
 ADD openresty-v${OPENRESTY_VERSION}-x86_64.tar /openresty
+ADD moproxy-${MOPROXY_VERSION}.tar.gz /
+RUN mv /moproxy-${MOPROXY_VERSION} /moproxy
 RUN /bin/sh /build.sh
 
 FROM scratch

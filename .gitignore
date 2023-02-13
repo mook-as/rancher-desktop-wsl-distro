@@ -3,3 +3,4 @@
 /rancher-desktop-guestagent-*
 /cri-dockerd-*
 /openresty-*
+/moproxy-*.tar.gz
